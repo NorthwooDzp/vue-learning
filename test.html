@@ -6,24 +6,44 @@
 
 </head>
 <body>
+<h1>Interpolation</h1>
 <div id="app">
     <input type="text" v-on:input="changeTitle">
-    <h1>Hello {{title}}</h1>
+    <h3>Hello {{title}}</h3>
+    <p>Summ: {{17+6}}</p>
+    <p>{{ getValue(60) }}</p>
+    <p>if statement: {{isOk ? 'OK' : 'not OK'}}</p>
+    <p>function: {{ string.split('').reverse().join('') }}</p>
 </div>
+<hr>
+<h1>Dynamical attributes</h1>
+<div id="app2">
 
+</div>
+<hr>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
     new Vue({
         el: '#app',
         data: {
-            title: 'Vue'
+            title: 'Vue',
+            isOk: false,
+            string: 'my name is Vladimir'
         },
         methods: {
-            changeTitle: function(event) {
+            changeTitle: function (event) {
                 this.title = event.target.value;
+            },
+            getValue: function (a) {
+                return a + 25;
             }
         }
     });
+    new Vue({
+        el: '#app2',
+        data: {},
+        methods: {}
+    })
 </script>
 </body>
 </html>
