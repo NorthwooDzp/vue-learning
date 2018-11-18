@@ -19,7 +19,14 @@
 <h1>Dynamical attributes</h1>
 <div id="app2">
     <h3>
-        <a v-bind:href="url">Google</a>
+        <a v-bind:href="url" target="_blank">Google</a>
+    </h3>
+</div>
+<hr>
+<h1>HTML layout</h1>
+<div id="app3">
+    <h3 v-html="elem">
+
     </h3>
 </div>
 <hr>
@@ -46,10 +53,15 @@
         data: {
             url: 'http://google.com'
         },
-        methods: {
-
-        }
-    })
+        methods: {}
+    });
+    new Vue({
+        el: '#app3',
+        data: {
+            elem: '<a href="http://google.com" target="_blank">Google</a>'
+        },
+        methods: {}
+    });
 </script>
 </body>
 </html>
