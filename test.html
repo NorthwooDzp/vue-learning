@@ -38,8 +38,17 @@
     <button v-on:click="counter2++"> + 1 </button>
 </div>
 <hr>
+<h1>Transferring parameters to methods</h1>
+<div id="app5">
+    <h3>Counter = {{counter}}</h3>
+    <button v-on:click="riseCounter(5, $event)"> + 5 </button>
+    <button v-on:click="riseCounter(10, $event)"> + 10 </button>
+</div>
+<hr>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
+
+    /*Interpolation*/
     new Vue({
         el: '#app',
         data: {
@@ -56,6 +65,7 @@
             }
         }
     });
+    /*Dynamical attributes*/
     new Vue({
         el: '#app2',
         data: {
@@ -63,6 +73,7 @@
         },
         methods: {}
     });
+    /*HTML layout*/
     new Vue({
         el: '#app3',
         data: {
@@ -70,6 +81,7 @@
         },
         methods: {}
     });
+    /*Events*/
     new Vue({
         el: '#app4',
         data:{
@@ -82,6 +94,23 @@
             },
             onHover: function (event) {
                 event.target.style.color = 'green';
+            }
+        }
+    });
+    /*Transferring parameters to methods*/
+    new Vue({
+        el: '#app5',
+        data: {
+            counter: 0
+        },
+        methods: {
+            riseCounter: function (a, event) {
+                this.counter += a;
+                if (a === 5) {
+                    event.target.style.color = 'blue';
+                } else if (a === 10) {
+                    event.target.style.color = 'red';
+                }
             }
         }
     });
