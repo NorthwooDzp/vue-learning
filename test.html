@@ -18,7 +18,9 @@
 <hr>
 <h1>Dynamical attributes</h1>
 <div id="app2">
-
+    <h3>
+        <a v-bind:href="url">Google</a>
+    </h3>
 </div>
 <hr>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -41,8 +43,12 @@
     });
     new Vue({
         el: '#app2',
-        data: {},
-        methods: {}
+        data: {
+            url: 'http://google.com'
+        },
+        methods: {
+
+        }
     })
 </script>
 </body>
