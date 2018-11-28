@@ -25,9 +25,7 @@
 <hr>
 <h1>HTML layout</h1>
 <div id="app3">
-    <h3 v-html="elem">
-
-    </h3>
+    <h3 v-html="elem"></h3>
 </div>
 <hr>
 <h1>Events</h1>
@@ -54,6 +52,8 @@
         X: {{x}} / Y: {{y}}
         <span v-on:mousemove.stop="">Don't change</span>
     </h3>
+    <input type="text" v-on:keyup.y="alertValue">
+    <input type="text" v-on:keyup.enter.space="alertValue">
 </div>
 <hr>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -135,6 +135,9 @@
             handleMouseMove: function (ev) {
                 this.x = ev.clientX;
                 this.y = ev.clientY;
+            },
+            alertValue: function (ev) {
+                alert(ev.target.value);
             }
         }
     });
