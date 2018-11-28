@@ -56,9 +56,31 @@
     <input type="text" v-on:keyup.enter.space="alertValue">
 </div>
 <hr>
+<h1>Links for Directives</h1>
+<div id="app7">
+    <h4>
+        <a :href="url" target="_blank">Link</a>
+    </h4>
+    <h4>Counter: {{counter}}</h4>
+    <button @click="counter++">Rise</button>
+</div>
+<hr>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
     /*Interpolation*/
+    // new Vue({
+    //     el: '#appX',
+    //     data: {},
+    //     methods: {}
+    // });
+    new Vue({
+        el: '#app7',
+        data: {
+            url: 'http://google.com',
+            counter: 1
+        },
+        methods: {}
+    });
     new Vue({
         el: '#app1',
         data: {
