@@ -1,236 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Vue start</title>
-    <style>
-        .circle {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 1px solid black;
-            display: inline-block;
-            margin: 40px;
-        }
+	<head>
+		<meta charset="UTF-8" />
+		<title>Vue start</title>
+		<style>
+			.circle {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				border: 1px solid black;
+				display: inline-block;
+				margin: 40px;
+			}
 
-        .red {
-            background-color: red;
-        }
+			.red {
+				background-color: red;
+			}
 
-        .blue {
-            background-color: blue;
-        }
+			.blue {
+				background-color: blue;
+			}
 
-        .green {
-            background-color: green;
-        }
+			.green {
+				background-color: green;
+			}
 
-        .red.blue {
-            background-color: gold;
-        }
-    </style>
-</head>
-<body>
-<h1>Interpolation</h1>
-<div id="app1">
-    <input type="text" v-on:input="changeTitle"/>
-    <h3>Hello {{ title }}</h3>
-    <p>Summ: {{ 17 + 6 }}</p>
-    <p>{{ getValue(60) }}</p>
-    <p>if statement: {{ isOk ? 'OK' : 'not OK' }}</p>
-    <p>
-        function:
-        {{
-        string
-        .split('')
-        .reverse()
-        .join('')
-        }}
-    </p>
-</div>
-<hr/>
-<h1>Dynamical attributes</h1>
-<div id="app2">
-    <h3><a v-bind:href="url" target="_blank">Google</a></h3>
-</div>
-<hr/>
-<h1>HTML layout</h1>
-<div id="app3"><h3 v-html="elem"></h3></div>
-<hr/>
-<h1>Events</h1>
-<div id="app4">
-    <h3>Counter = {{ counter }}</h3>
-    <button v-on:click="addCounter">+ 1</button>
-    <h3 v-on:mouseover="onHover">Counter 2 = {{ counter2 }}</h3>
-    <button v-on:click="counter2++">+ 1</button>
-</div>
-<hr/>
-<h1>Transferring parameters to methods</h1>
-<div id="app5">
-    <h3>Counter = {{ counter }}</h3>
-    <button v-on:click="riseCounter(5, $event)">+ 5</button>
-    <button v-on:click="riseCounter(10, $event)">+ 10</button>
-</div>
-<hr/>
-<h1>Events modificators</h1>
-<div id="app6">
-    <h3>
-        <a v-on:click.prevent="" href="http://google.com" target="_blank"
-        >Google</a
-        >
-    </h3>
-    <h3 v-on:mousemove="handleMouseMove">
-        X: {{ x }} / Y: {{ y }} <span v-on:mousemove.stop="">Don't change</span>
-    </h3>
-    <input type="text" v-on:keyup.y="alertValue"/>
-    <input type="text" v-on:keyup.enter.space="alertValue"/>
-</div>
-<hr/>
-<h1>Links for Directives</h1>
-<div id="app7">
-    <h4><a :href="url" target="_blank">Link</a></h4>
-    <h4>Counter: {{ counter }}</h4>
-    <button @click="counter++">Rise</button>
-</div>
-<hr/>
-<h1>Model for work with forms</h1>
-<div id="app8">
-    <input type="text" v-model="inputValue"/>
-    <input type="text" v-model.lazy="inputValue">
-    <p>{{ inputValue }}</p>
-</div>
-<hr/>
-<h1>Work with styles</h1>
-<div id="app9">
-    <div class="circle"
-         @click="isActive = !isActive"
-         :class="{'red': isActive, 'green': !isActive}"
-    ></div>
-    <div class="circle" :class="color"></div>
-    <input type="text" v-model="color">
-    <div class="circle" :class="[color, {'red': isActive}]"></div>
-    <div class="circle" :class="getCssClasses"></div>
-</div>
-<hr>
+			.red.blue {
+				background-color: gold;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<h1>Interpolation</h1>
+		<div id="app1">
+			<input type="text" v-on:input="changeTitle" />
+			<h3>Hello {{ title }}</h3>
+			<p>Summ: {{ 17 + 6 }}</p>
+			<p>{{ getValue(60) }}</p>
+			<p>if statement: {{ isOk ? 'OK' : 'not OK' }}</p>
+			<p>
+				function:
+				{{
+					string
+						.split('')
+						.reverse()
+						.join('')
+				}}
+			</p>
+		</div>
+		<hr />
+		<h1>Dynamical attributes</h1>
+		<div id="app2">
+			<h3><a v-bind:href="url" target="_blank">Google</a></h3>
+		</div>
+		<hr />
+		<h1>HTML layout</h1>
+		<div id="app3"><h3 v-html="elem"></h3></div>
+		<hr />
+		<h1>Events</h1>
+		<div id="app4">
+			<h3>Counter = {{ counter }}</h3>
+			<button v-on:click="addCounter">+ 1</button>
+			<h3 v-on:mouseover="onHover">Counter 2 = {{ counter2 }}</h3>
+			<button v-on:click="counter2++">+ 1</button>
+		</div>
+		<hr />
+		<h1>Transferring parameters to methods</h1>
+		<div id="app5">
+			<h3>Counter = {{ counter }}</h3>
+			<button v-on:click="riseCounter(5, $event)">+ 5</button>
+			<button v-on:click="riseCounter(10, $event)">+ 10</button>
+		</div>
+		<hr />
+		<h1>Events modificators</h1>
+		<div id="app6">
+			<h3>
+				<a v-on:click.prevent="" href="http://google.com" target="_blank"
+					>Google</a
+				>
+			</h3>
+			<h3 v-on:mousemove="handleMouseMove">
+				X: {{ x }} / Y: {{ y }} <span v-on:mousemove.stop="">Don't change</span>
+			</h3>
+			<input type="text" v-on:keyup.y="alertValue" />
+			<input type="text" v-on:keyup.enter.space="alertValue" />
+		</div>
+		<hr />
+		<h1>Links for Directives</h1>
+		<div id="app7">
+			<h4><a :href="url" target="_blank">Link</a></h4>
+			<h4>Counter: {{ counter }}</h4>
+			<button @click="counter++">Rise</button>
+		</div>
+		<hr />
+		<h1>Model for work with forms</h1>
+		<div id="app8">
+			<input type="text" v-model="inputValue" />
+			<input type="text" v-model.lazy="inputValue" />
+			<p>{{ inputValue }}</p>
+		</div>
+		<hr />
+		<h1>Work with styles</h1>
+		<div id="app9">
+			<div
+				class="circle"
+				@click="isActive = !isActive"
+				:class="{'red': isActive, 'green': !isActive}"
+			></div>
+			<div class="circle" :class="color"></div>
+			<input type="text" v-model="color" />
+			<div class="circle" :class="[color, {'red': isActive}]"></div>
+			<div class="circle" :class="getCssClasses"></div>
+		</div>
+		<hr />
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script>
-    /*Interpolation*/
-    // new Vue({
-    //     el: '#appX',
-    //     data: {},
-    //     methods: {}
-    // });
-    new Vue({
-        el: '#app9',
-        data: {
-            isActive: false,
-            color: 'blue'
-        },
-        computed: {
-            getCssClasses: function () {
-                return this.isActive ? 'red' : 'green';
-            }
-        },
-        methods: {}
-    });
-    new Vue({
-        el: '#app8',
-        data: {
-            inputValue: 'initialValue'
-        },
-        methods: {}
-    });
-    new Vue({
-        el: '#app7',
-        data: {
-            url: 'http://google.com',
-            counter: 1
-        },
-        methods: {}
-    });
-    new Vue({
-        el: '#app1',
-        data: {
-            title: 'Vue',
-            isOk: false,
-            string: 'my name is Vladimir'
-        },
-        methods: {
-            changeTitle: function (event) {
-                this.title = event.target.value;
-            },
-            getValue: function (a) {
-                return a + 25;
-            }
-        }
-    });
-    /*Dynamical attributes*/
-    new Vue({
-        el: '#app2',
-        data: {
-            url: 'http://google.com'
-        },
-        methods: {}
-    });
-    /*HTML layout*/
-    new Vue({
-        el: '#app3',
-        data: {
-            elem: '<a href="http://google.com" target="_blank">Google</a>'
-        },
-        methods: {}
-    });
-    /*Events*/
-    new Vue({
-        el: '#app4',
-        data: {
-            counter: 0,
-            counter2: 0
-        },
-        methods: {
-            addCounter: function () {
-                this.counter++;
-            },
-            onHover: function (event) {
-                event.target.style.color = 'green';
-            }
-        }
-    });
-    /*Transferring parameters to methods*/
-    new Vue({
-        el: '#app5',
-        data: {
-            counter: 0
-        },
-        methods: {
-            riseCounter: function (a, event) {
-                this.counter += a;
-                if (a === 5) {
-                    event.target.style.color = 'blue';
-                } else if (a === 10) {
-                    event.target.style.color = 'red';
-                }
-            }
-        }
-    });
-    /*Events modificators*/
-    new Vue({
-        el: '#app6',
-        data: {
-            x: 0,
-            y: 0
-        },
-        methods: {
-            handleMouseMove: function (ev) {
-                this.x = ev.clientX;
-                this.y = ev.clientY;
-            },
-            alertValue: function (ev) {
-                alert(ev.target.value);
-            }
-        }
-    });
-</script>
-</body>
+		<script src="vue.js"></script>
+		<script>
+			// new Vue({
+			//     el: '#appX',
+			//     data: {},
+			//     methods: {}
+			// });
+			new Vue({
+				el: '#app9',
+				data: {
+					isActive: false,
+					color: 'blue'
+				},
+				computed: {
+					getCssClasses: function() {
+						return this.isActive ? 'red' : 'green';
+					}
+				},
+				methods: {}
+			});
+			new Vue({
+				el: '#app8',
+				data: {
+					inputValue: 'initialValue'
+				},
+				methods: {}
+			});
+			new Vue({
+				el: '#app7',
+				data: {
+					url: 'http://google.com',
+					counter: 1
+				},
+				methods: {}
+			});
+			/*Interpolation*/
+			new Vue({
+				el: '#app1',
+				data: {
+					title: 'Vue',
+					isOk: false,
+					string: 'my name is Vladimir'
+				},
+				methods: {
+					changeTitle: function(event) {
+						this.title = event.target.value;
+					},
+					getValue: function(a) {
+						return a + 25;
+					}
+				}
+			});
+			/*Dynamical attributes*/
+			new Vue({
+				el: '#app2',
+				data: {
+					url: 'http://google.com'
+				},
+				methods: {}
+			});
+			/*HTML layout*/
+			new Vue({
+				el: '#app3',
+				data: {
+					elem: '<a href="http://google.com" target="_blank">Google</a>'
+				},
+				methods: {}
+			});
+			/*Events*/
+			new Vue({
+				el: '#app4',
+				data: {
+					counter: 0,
+					counter2: 0
+				},
+				methods: {
+					addCounter: function() {
+						this.counter++;
+					},
+					onHover: function(event) {
+						event.target.style.color = 'green';
+					}
+				}
+			});
+			/*Transferring parameters to methods*/
+			new Vue({
+				el: '#app5',
+				data: {
+					counter: 0
+				},
+				methods: {
+					riseCounter: function(a, event) {
+						this.counter += a;
+						if (a === 5) {
+							event.target.style.color = 'blue';
+						} else if (a === 10) {
+							event.target.style.color = 'red';
+						}
+					}
+				}
+			});
+			/*Events modificators*/
+			new Vue({
+				el: '#app6',
+				data: {
+					x: 0,
+					y: 0
+				},
+				methods: {
+					handleMouseMove: function(ev) {
+						this.x = ev.clientX;
+						this.y = ev.clientY;
+					},
+					alertValue: function(ev) {
+						alert(ev.target.value);
+					}
+				}
+			});
+		</script>
+	</body>
 </html>
