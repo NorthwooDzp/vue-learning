@@ -118,7 +118,6 @@
     <div class="circle" :style="{'background-color': color, 'border': border}"></div>
     <div class="circle" :style="circleStyles"></div>
     <div class="circle" :style="[circleStyles, {'box-shadow': '3px 3px 4px 2px black'}]"></div>
-
     <input type="text" v-model="color">
     <input type="text" v-model="border">
 </div>
@@ -128,17 +127,14 @@
     <h2 v-if="isVisible">I'm Visible</h2>
     <h2 v-else>I'm hidden by v-else</h2>
     <h2 v-if="!isVisible">I'm hidden</h2>
-
     <div>
         <button @click="isVisible = !isVisible">Toggle</button>
     </div>
     <h2 v-show="isVisible">I'm Visible</h2>
     <h2 v-show="!isVisible">I'm hidden</h2>
-
     <div>
         <button @click="isVisible = !isVisible">Toggle</button>
     </div>
-
     <h2 v-if="type === 'a'">A</h2>
     <h2 v-else-if="type === 'b'">B</h2>
     <h2 v-else-if="type === 'c'">C</h2>
@@ -146,31 +142,76 @@
     <div>
         <input type="text" v-model="type">
     </div>
-
     <template v-if="isVisible">
         <h3>I'm title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
     </template>
-
     <template v-else>
         <h3 style="color: red">I'm title</h3>
         <p style="color: blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
     </template>
-
 </div>
 <hr>
+<h1>Work with lists</h1>
+<div id="app12">
+    <ul>
+        <li v-for="(item, index) of people">
+            {{index + 1}} -> name: {{item.name}}, age: {{item.age}}
+        </li>
+    </ul>
+    <p>==================================================</p>
+    <ul v-for="user of users">
+        <li v-for="(value, key, index) in user">
+           <b>{{key}}</b> => {{value}} -> <em>{{index + 1}}</em>
+        </li>
+    </ul>
+    <p>==================================================</p>
+    <ol>
+        <li v-for="num of 10">{{num}}</li>
+    </ol>
+</div>
+<hr>
+
 <script src="vue.js"></script>
 <script>
-    /* Show and hide elements */
+    /* Work with lists */
     new Vue({
-        el: '#app11',
+        el: '#app12',
         data: {
-            isVisible: true,
-            type: 'a'
+            people: [
+                {
+                    name: 'John',
+                    age: 40
+                },
+                {
+                    name: 'Bob',
+                    age: 30
+                },
+                {
+                    name: 'Ronald',
+                    age: 35
+                }
+            ],
+            users: [
+                {
+                    name:'Tom',
+                    age:22
+                },
+                {
+                    name:'Bob',
+                    age:31
+                },
+                {
+                    name: 'Sam'
+                    , age:28
+                }
+            ]
         },
         computed: {},
         methods: {}
     });
+
+
     // new Vue({
     //     el: '#appX',
     //     data: {},
@@ -307,6 +348,16 @@
                 };
             }
         },
+        methods: {}
+    });
+    /* Show and hide elements */
+    new Vue({
+        el: '#app11',
+        data: {
+            isVisible: true,
+            type: 'a'
+        },
+        computed: {},
         methods: {}
     });
 </script>
