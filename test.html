@@ -116,15 +116,61 @@
 <h1>Work with inline styles</h1>
 <div id="app10">
     <div class="circle" :style="{'background-color': color, 'border': border}"></div>
-    <div class="circle" :style="circleClasses"></div>
-    <div class="circle" :style="[circleClasses, {'box-shadow': '3px 3px 4px 2px black'}]"></div>
+    <div class="circle" :style="circleStyles"></div>
+    <div class="circle" :style="[circleStyles, {'box-shadow': '3px 3px 4px 2px black'}]"></div>
 
     <input type="text" v-model="color">
     <input type="text" v-model="border">
 </div>
 <hr>
+<h1>Show and hide elements</h1>
+<div id="app11">
+    <h2 v-if="isVisible">I'm Visible</h2>
+    <h2 v-else>I'm hidden by v-else</h2>
+    <h2 v-if="!isVisible">I'm hidden</h2>
+
+    <div>
+        <button @click="isVisible = !isVisible">Toggle</button>
+    </div>
+    <h2 v-show="isVisible">I'm Visible</h2>
+    <h2 v-show="!isVisible">I'm hidden</h2>
+
+    <div>
+        <button @click="isVisible = !isVisible">Toggle</button>
+    </div>
+
+    <h2 v-if="type === 'a'">A</h2>
+    <h2 v-else-if="type === 'b'">B</h2>
+    <h2 v-else-if="type === 'c'">C</h2>
+    <h2 v-else>Not match</h2>
+    <div>
+        <input type="text" v-model="type">
+    </div>
+
+    <template v-if="isVisible">
+        <h3>I'm title</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    </template>
+
+    <template v-else>
+        <h3 style="color: red">I'm title</h3>
+        <p style="color: blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    </template>
+
+</div>
+<hr>
 <script src="vue.js"></script>
 <script>
+    /* Show and hide elements */
+    new Vue({
+        el: '#app11',
+        data: {
+            isVisible: true,
+            type: 'a'
+        },
+        computed: {},
+        methods: {}
+    });
     // new Vue({
     //     el: '#appX',
     //     data: {},
@@ -252,10 +298,10 @@
         el: '#app10',
         data: {
             color: 'gold',
-            border: '1px solid red'
+            border: '1px solid brown'
         },
         computed: {
-            circleClasses: function () {
+            circleStyles: function () {
                 return {
                     'background-color': this.color, 'border': this.border
                 };
