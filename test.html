@@ -206,12 +206,35 @@
 </div>
 <hr>
 <!---->
-
-
+<h1>Binding different applications. Instance Vue</h1>
+<div id="app15-1">
+    <h3> {{title}} </h3>
+    <h4>{{newField}}</h4>
+    <p>
+        <button @click="title = 'Updated Title'">
+            Update title
+        </button>
+    </p>
+</div>
+---------------------------
+<div id="app15-2">
+    <h3> {{title}} </h3>
+    <p>
+        <button @click="title = 'Updated Title'">
+            Update title
+        </button>
+        <button @click="updateFirstTitle">
+            Update title #app15-1
+        </button>
+    </p>
+</div>
+<hr>
 
 
 <script src="vue.js"></script>
 <script>
+
+
 
 
 
@@ -221,7 +244,6 @@
     //     computed: {},
     //     methods: {}
     // });
-
 
     /* Interpolation */
     new Vue({
@@ -411,7 +433,7 @@
         methods: {}
     });
 
-    /*Optimizing with computed*/
+    /* Optimizing with computed */
     new Vue({
         el: '#app13',
         data: {
@@ -438,7 +460,7 @@
         }
     });
 
-    /*Watching changes with watch*/
+    /* Watching changes with watch */
     new Vue({
         el: '#app14',
         data: {
@@ -469,6 +491,41 @@
             },
             counter2: function (val) {
                 console.log('counter2 was changed => ', val);
+            }
+        }
+    });
+
+    /* Binding different applications. Instance Vue */
+    var vue1 = new Vue({
+        el: '#app15-1',
+        data: {
+            title: 'Hello, I\'m Vue #app15-1'
+        },
+        computed: {},
+        methods: {
+            alertFast: function () {
+                alert('I\'m from ' + this.title);
+            }
+        }
+    });
+    vue1.newField = 'random string'; // not works
+    var vue2 = new Vue({
+        el: '#app15-2',
+        data: {
+            title: 'Hello, I\'m Vue #app15-2'
+        },
+        computed: {},
+        methods: {
+            updateFirstTitle: function () {
+                vue1.title = 'Updated title from #app15-2';
+                // console.log(vue2);
+                vue1.newField = 'New field from #app15-2' // works
+                setTimeout(function() {
+                    vue1.alertFast();
+                }, 1000);
+                setTimeout(function() {
+                    vue1.alertFast.apply(this); // context was not changed
+                }, 2000);
             }
         }
     });
