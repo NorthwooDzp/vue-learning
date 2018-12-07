@@ -31,6 +31,7 @@
     </style>
 </head>
 <body>
+<!---->
 <h1>Interpolation</h1>
 <div id="app1">
     <input type="text" v-on:input="changeTitle"/>
@@ -49,14 +50,17 @@
     </p>
 </div>
 <hr/>
+<!---->
 <h1>Dynamical attributes</h1>
 <div id="app2">
     <h3><a v-bind:href="url" target="_blank">Google</a></h3>
 </div>
 <hr/>
+<!---->
 <h1>HTML layout</h1>
 <div id="app3"><h3 v-html="elem"></h3></div>
 <hr/>
+<!---->
 <h1>Events</h1>
 <div id="app4">
     <h3>Counter = {{ counter }}</h3>
@@ -65,6 +69,7 @@
     <button v-on:click="counter2++">+ 1</button>
 </div>
 <hr/>
+<!---->
 <h1>Transferring parameters to methods</h1>
 <div id="app5">
     <h3>Counter = {{ counter }}</h3>
@@ -72,6 +77,7 @@
     <button v-on:click="riseCounter(10, $event)">+ 10</button>
 </div>
 <hr/>
+<!---->
 <h1>Events modificators</h1>
 <div id="app6">
     <h3>
@@ -86,6 +92,7 @@
     <input type="text" v-on:keyup.enter.space="alertValue"/>
 </div>
 <hr/>
+<!---->
 <h1>Links for Directives</h1>
 <div id="app7">
     <h4><a :href="url" target="_blank">Link</a></h4>
@@ -93,6 +100,7 @@
     <button @click="counter++">Rise</button>
 </div>
 <hr/>
+<!---->
 <h1>Model for work with forms</h1>
 <div id="app8">
     <input type="text" v-model="inputValue"/>
@@ -100,6 +108,7 @@
     <p>{{ inputValue }}</p>
 </div>
 <hr/>
+<!---->
 <h1>Work with styles classes</h1>
 <div id="app9">
     <div
@@ -113,6 +122,7 @@
     <div class="circle" :class="getCssClasses"></div>
 </div>
 <hr/>
+<!---->
 <h1>Work with inline styles</h1>
 <div id="app10">
     <div class="circle" :style="{'background-color': color, 'border': border}"></div>
@@ -122,6 +132,7 @@
     <input type="text" v-model="border">
 </div>
 <hr>
+<!---->
 <h1>Show and hide elements</h1>
 <div id="app11">
     <h2 v-if="isVisible">I'm Visible</h2>
@@ -152,6 +163,7 @@
     </template>
 </div>
 <hr>
+<!---->
 <h1>Work with lists</h1>
 <div id="app12">
     <ul>
@@ -171,6 +183,7 @@
     </ol>
 </div>
 <hr>
+<!---->
 <h1>Optimizing with computed</h1>
 <div id="app13">
     <h3>{{counter}} / {{counter2}}</h3>
@@ -181,39 +194,29 @@
     <button @click="counter2++">Add counter 2</button>
 </div>
 <hr>
+<!---->
+<h1>Watching changes with watch</h1>
+<div id="app14">
+    <h3>{{counter}} / {{counter2}}</h3>
+    <h4>Result: {{result()}}</h4>
+    <h4>Computed result: {{computedResult}}</h4>
+    <button @click="add">Add</button>
+    <button @click="sub">Sub</button>
+    <button @click="counter2++">Add counter 2</button>
+</div>
+<hr>
+<!---->
+
+
 
 
 <script src="vue.js"></script>
 <script>
-    /*Optimizing with computed*/
-    new Vue({
-        el: '#app13',
-        data: {
-            counter: 0,
-            counter2: 0
-        },
-        computed: {
-            computedResult: function () {
-                console.log('computed result was called');
-                return this.counter > 3 ? 'More than 3' : 'Less than 3';
-            }
-        },
-        methods: {
-            add: function () {
-                this.counter++;
-            },
-            sub: function () {
-                this.counter--;
-            },
-            result: function () {
-                console.log('result was called');
-                return this.counter > 3 ? 'More than 3' : 'Less than 3';
-            }
-        }
-    });
+
+
 
     // new Vue({
-    //     el: '#app13',
+    //     el: '#app15',
     //     data: {},
     //     computed: {},
     //     methods: {}
@@ -237,6 +240,7 @@
             }
         }
     });
+
     /* Dynamical attributes */
     new Vue({
         el: '#app2',
@@ -245,6 +249,7 @@
         },
         methods: {}
     });
+
     /* HTML layout */
     new Vue({
         el: '#app3',
@@ -253,6 +258,7 @@
         },
         methods: {}
     });
+
     /* Events */
     new Vue({
         el: '#app4',
@@ -269,6 +275,7 @@
             }
         }
     });
+
     /* Transferring parameters to methods */
     new Vue({
         el: '#app5',
@@ -286,6 +293,7 @@
             }
         }
     });
+
     /* Events modificators */
     new Vue({
         el: '#app6',
@@ -303,6 +311,7 @@
             }
         }
     });
+
     /* Links for Directives */
     new Vue({
         el: '#app7',
@@ -312,6 +321,7 @@
         },
         methods: {}
     });
+
     /* Model for work with forms */
     new Vue({
         el: '#app8',
@@ -320,6 +330,7 @@
         },
         methods: {}
     });
+
     /* Work with styles classes */
     new Vue({
         el: '#app9',
@@ -334,6 +345,7 @@
         },
         methods: {}
     });
+
     /* work with inline styles */
     new Vue({
         el: '#app10',
@@ -350,6 +362,7 @@
         },
         methods: {}
     });
+
     /* Show and hide elements */
     new Vue({
         el: '#app11',
@@ -360,6 +373,7 @@
         computed: {},
         methods: {}
     });
+
     /* Work with lists */
     new Vue({
         el: '#app12',
@@ -396,6 +410,69 @@
         computed: {},
         methods: {}
     });
+
+    /*Optimizing with computed*/
+    new Vue({
+        el: '#app13',
+        data: {
+            counter: 0,
+            counter2: 0
+        },
+        computed: {
+            computedResult: function () {
+                console.log('computed result was called');
+                return this.counter > 3 ? 'More than 3' : 'Less than 3';
+            }
+        },
+        methods: {
+            add: function () {
+                this.counter++;
+            },
+            sub: function () {
+                this.counter--;
+            },
+            result: function () {
+                console.log('result was called');
+                return this.counter > 3 ? 'More than 3' : 'Less than 3';
+            }
+        }
+    });
+
+    /*Watching changes with watch*/
+    new Vue({
+        el: '#app14',
+        data: {
+            counter: 0,
+            counter2: 0
+        },
+        computed: {
+            computedResult: function () {
+                console.log('computed result was called');
+                return this.counter > 3 ? 'More than 3' : 'Less than 3';
+            }
+        },
+        methods: {
+            add: function () {
+                this.counter++;
+            },
+            sub: function () {
+                this.counter--;
+            },
+            result: function () {
+                console.log('result was called');
+                return this.counter > 3 ? 'More than 3' : 'Less than 3';
+            }
+        },
+        watch: {
+            counter: function (val) {
+                console.log('counter was changed => ', val);
+            },
+            counter2: function (val) {
+                console.log('counter2 was changed => ', val);
+            }
+        }
+    });
+
 </script>
 </body>
 </html>
