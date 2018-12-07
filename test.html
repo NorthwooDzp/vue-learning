@@ -162,7 +162,7 @@
     <p>==================================================</p>
     <ul v-for="user of users">
         <li v-for="(value, key, index) in user">
-           <b>{{key}}</b> => {{value}} -> <em>{{index + 1}}</em>
+            <b>{{key}}</b> => {{value}} -> <em>{{index + 1}}</em>
         </li>
     </ul>
     <p>==================================================</p>
@@ -171,14 +171,49 @@
     </ol>
 </div>
 <hr>
+<h1>Optimizing with computed</h1>
+<div id="app13">
+    <h3>{{counter}} / {{counter2}}</h3>
+    <h4>Result: {{result()}}</h4>
+    <h4>Computed result: {{computedResult}}</h4>
+    <button @click="add">Add</button>
+    <button @click="sub">Sub</button>
+    <button @click="counter2++">Add counter 2</button>
+</div>
+<hr>
+
 
 <script src="vue.js"></script>
 <script>
-
-
+    /*Optimizing with computed*/
+    new Vue({
+        el: '#app13',
+        data: {
+            counter: 0,
+            counter2: 0
+        },
+        computed: {
+            computedResult: function () {
+                console.log('computed result was called');
+                return this.counter > 3 ? 'More than 3' : 'Less than 3';
+            }
+        },
+        methods: {
+            add: function () {
+                this.counter++;
+            },
+            sub: function () {
+                this.counter--;
+            },
+            result: function () {
+                console.log('result was called');
+                return this.counter > 3 ? 'More than 3' : 'Less than 3';
+            }
+        }
+    });
 
     // new Vue({
-    //     el: '#appX',
+    //     el: '#app13',
     //     data: {},
     //     computed: {},
     //     methods: {}
@@ -345,16 +380,16 @@
             ],
             users: [
                 {
-                    name:'Tom',
-                    age:22
+                    name: 'Tom',
+                    age: 22
                 },
                 {
-                    name:'Bob',
-                    age:31
+                    name: 'Bob',
+                    age: 31
                 },
                 {
                     name: 'Sam'
-                    , age:28
+                    , age: 28
                 }
             ]
         },
