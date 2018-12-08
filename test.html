@@ -229,6 +229,12 @@
     </p>
 </div>
 <hr>
+<h1>Access to DOM elements</h1>
+<div id="app16">
+    <h3 ref="heading">{{ title }}</h3>
+    <button @click="updateTitle">Update title</button>
+</div>
+<hr>
 
 
 <script src="vue.js"></script>
@@ -237,9 +243,8 @@
 
 
 
-
     // new Vue({
-    //     el: '#app15',
+    //     el: '#app16',
     //     data: {},
     //     computed: {},
     //     methods: {}
@@ -519,13 +524,29 @@
             updateFirstTitle: function () {
                 vue1.title = 'Updated title from #app15-2';
                 // console.log(vue2);
-                vue1.newField = 'New field from #app15-2' // works
-                setTimeout(function() {
+                vue1.newField = 'New field from #app15-2'; // works
+                setTimeout(function () {
                     vue1.alertFast();
                 }, 1000);
-                setTimeout(function() {
+                setTimeout(function () {
                     vue1.alertFast.apply(this); // context was not changed
                 }, 2000);
+            }
+        }
+    });
+
+    /* Access to DOM elements */
+    new Vue({
+        el: '#app16',
+        data: {
+            title: 'Hello, I\'m Vue'
+        },
+        computed: {},
+        methods: {
+            updateTitle: function () {
+                this.title = 'Updated title';
+                this.$refs.heading.style.color = 'red'
+                console.log(this.$refs.heading);
             }
         }
     });
