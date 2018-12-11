@@ -241,20 +241,16 @@
 <div id="app17"></div>
 <hr>
 <!---->
-
+<h1>Live Cycle</h1>
+<div id="app18">
+    <h2>{{ title }}</h2>
+    <button @click="title = 'Changed Title'">Change</button>
+    <button @click="doDestroy">Destroy</button>
+</div>
+<hr>
 
 <script src="vue.js"></script>
 <script>
-
-
-
-
-    // new Vue({
-    //     el: '#app16',
-    //     data: {},
-    //     computed: {},
-    //     methods: {}
-    // });
 
     /* Interpolation */
     new Vue({
@@ -568,6 +564,43 @@
     });
     vue17.$mount('#app17');
 
+    /* Live Cycle */
+    new Vue({
+        el: '#app18',
+        data: {
+            title: 'Lesson about LiveCycle of instance Vue'
+        },
+        computed: {},
+        methods: {
+            doDestroy: function () {
+                this.$destroy();
+            }
+        },
+        beforeCreate: function () {
+            console.log('before create ' + Date.now());
+        },
+        created: function () {
+            console.log('created ' + Date.now());
+        },
+        beforeMount: function () {
+            console.log('before mount ' + Date.now());
+        },
+        mounted: function () {
+            console.log('mounted ' + Date.now());
+        },
+        beforeUpdate: function () {
+            console.log('before update ' + Date.now());
+        },
+        updated: function () {
+            console.log('updated ' + Date.now());
+        },
+        beforeDestroy: function () {
+            console.log('before destroy ' + Date.now());
+        },
+        destroyed: function () {
+            console.log('destroyed ' + Date.now());
+        }
+    });
 </script>
 </body>
 </html>
