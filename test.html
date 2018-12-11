@@ -238,27 +238,15 @@
 <hr>
 <!---->
 <h1>Property template</h1>
-<div id="app17">
-
-</div>
+<div id="app17"></div>
 <hr>
 <!---->
-
-
-
 
 
 <script src="vue.js"></script>
 <script>
 
-    /* Property template */
 
-    new Vue({
-        el: '#app17',
-        data: {},
-        computed: {},
-        methods: {}
-    });
 
 
     // new Vue({
@@ -563,11 +551,22 @@
         methods: {
             updateTitle: function () {
                 this.title = 'Updated title';
-                this.$refs.heading.style.color = 'red'
+                this.$refs.heading.style.color = 'red';
                 console.log(this.$refs.heading);
             }
         }
     });
+
+    /* Property template */
+    var vue17 = new Vue({
+        data: {
+            title: 'Hello, I\'m Vue'
+        },
+        template: '<div><h3>{{title}}</h3><p>Hello, P</p></div>',
+        computed: {},
+        methods: {}
+    });
+    vue17.$mount('#app17');
 
 </script>
 </body>
