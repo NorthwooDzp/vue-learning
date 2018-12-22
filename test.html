@@ -248,9 +248,15 @@
     <button @click="doDestroy">Destroy</button>
 </div>
 <hr>
+<!---->
+<h1>Components</h1>
+<div id="app19">
+    <my-counter v-for="c of 5"></my-counter>
+</div>
 
 <script src="vue.js"></script>
 <script>
+
 
     /* Interpolation */
     new Vue({
@@ -601,6 +607,30 @@
             console.log('destroyed ' + Date.now());
         }
     });
+
+    /* Components */
+    Vue.component('my-counter', {
+        template: `
+            <div style="border: 1px solid black; padding: 10px">
+                <h3>Counter: {{counter}}</h3>
+                <button @click="add">Add 1 to counter</button>
+            </div>
+        `,
+        data: function () {
+            return {
+                counter: 0
+            }
+        },
+        methods: {
+            add: function () {
+                this.counter++;
+            }
+        }
+    });
+    new Vue({
+        el: '#app19',
+    });
+
 </script>
 </body>
 </html>
