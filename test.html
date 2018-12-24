@@ -261,7 +261,7 @@
 </div>
 
 <div id="app20-2">
-    <my-counter></my-counter>
+    <My-Counter/>
 </div>
 
 <script src="vue.js"></script>
@@ -662,6 +662,7 @@
         }
     };
     var component2 = {
+        name: 'MyCounter',
         template: `
         <div style="border: 1px solid red; padding: 12px; background: lightblue">
         <h3>Counter: {{counter}}</h3>
@@ -688,7 +689,7 @@
     new Vue({
         el: '#app20-2',
         components: {
-            'my-counter': component2
+            MyCounter: component2
         }
     });
 
