@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" class="app">
         <Car/>
     </div>
 </template>
@@ -23,5 +23,8 @@
         text-align: left;
         color: #2c3e50;
         margin-top: 60px;
+    }
+    .app {
+        background: lightblue;
     }
 </style>
