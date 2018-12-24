@@ -253,9 +253,20 @@
 <div id="app19">
     <my-counter v-for="c of 5"></my-counter>
 </div>
+<hr>
+<!---->
+<h1>Components registration</h1>
+<div id="app20-1">
+    <my-counter></my-counter>
+</div>
+
+<div id="app20-2">
+    <my-counter></my-counter>
+</div>
 
 <script src="vue.js"></script>
 <script>
+
 
 
     /* Interpolation */
@@ -619,7 +630,7 @@
         data: function () {
             return {
                 counter: 0
-            }
+            };
         },
         methods: {
             add: function () {
@@ -629,6 +640,56 @@
     });
     new Vue({
         el: '#app19',
+    });
+
+    /* Registration of components */
+    var component = {
+        template: `
+            <div style="border: 1px solid black; padding: 10px">
+                <h3>Counter: {{counter}}</h3>
+                <button @click="add">Add 1 to counter</button>
+            </div>
+        `,
+        data: function () {
+            return {
+                counter: 0
+            };
+        },
+        methods: {
+            add: function () {
+                this.counter++;
+            }
+        }
+    };
+    var component2 = {
+        template: `
+        <div style="border: 1px solid red; padding: 12px; background: lightblue">
+        <h3>Counter: {{counter}}</h3>
+                <button @click="add">Add 1 to counter</button>
+        </div>
+        `,
+        data: function () {
+            return {
+                counter: 4
+            };
+        },
+        methods: {
+            add: function () {
+                this.counter++;
+            }
+        }
+    };
+    new Vue({
+        el: '#app20-1',
+        components: {
+            'my-counter': component
+        }
+    });
+    new Vue({
+        el: '#app20-2',
+        components: {
+            'my-counter': component2
+        }
     });
 
 </script>
