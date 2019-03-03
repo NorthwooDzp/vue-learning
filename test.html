@@ -264,7 +264,7 @@
     <My-Counter/>
 </div>
 
-<script src="vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
 <script>
 
 
@@ -664,10 +664,10 @@
     var component2 = {
         name: 'MyCounter',
         template: `
-        <div style="border: 1px solid red; padding: 12px; background: lightblue">
-        <h3>Counter: {{counter}}</h3>
-                <button @click="add">Add 1 to counter</button>
-        </div>
+            <div style="border: 1px solid red; padding: 12px; background: lightblue">
+            <h3>Counter: {{counter}}</h3>
+                    <button @click="add">Add 1 to counter</button>
+            </div>
         `,
         data: function () {
             return {
