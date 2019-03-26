@@ -1,7 +1,7 @@
 <template>
     <div class="car">
         <h4>Name: {{carName}} \ {{reverseName}} </h4>
-        <h4><i>Year: {{year}}</i></h4>
+        <h4>Year: {{year}}</h4>
         <button @click="emitName('not ford')">Change name</button>
         <button @click="changeFunc()"> Change name from parent</button>
         <button @click="updateCounter">Update Counter</button>
@@ -53,5 +53,9 @@
         padding: 14px 24px;
         border-radius: 9px;
         background-color: aqua;
+    }
+    h4 {
+        font-weight: 900;
+        font-size: 26px;
     }
 </style>
