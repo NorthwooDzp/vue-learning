@@ -1,30 +1,40 @@
 <template>
     <div id="app">
-        <Car :carName="carName"
-        @nameChanged="changeName($event)"
-        :changeFunc="changeNameToAudi"/>
+        <Counter
+            :counter="counter"
+        />
+        <Car
+            :carName="carName"
+            :changeFunc="changeNameToAudi"
+            :counter="counter"
+            @nameChanged="changeName($event)"
+            @counterUpdated="counter = $event"
+        />
     </div>
 </template>
 
 <script>
     import Car from './components/Car';
+    import Counter from './components/Counter';
 
     export default {
         name: 'app',
         components: {
-            Car
+            Car,
+            Counter
         },
         data() {
             return {
-                carName: 'Ford'
-            }
+                carName: 'Ford',
+                counter: 0
+            };
         },
         methods: {
             changeName(name) {
                 this.carName = name;
             },
             changeNameToAudi() {
-                this.carName = 'Audi'
+                this.carName = 'Audi';
             }
         }
     };
