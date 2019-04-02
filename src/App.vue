@@ -56,13 +56,26 @@
             <hr>
             <p>{{typeof numberVal}} , {{numberVal}}</p>
         </div>
+        <div>
+            <h4>custom control</h4>
+            <OnOff v-model="onOff"/>
+            <hr>
+            <div>
+                Component is <span v-if="onOff">Enabled</span>
+                <span v-if="!onOff">Disabled</span>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import OnOff from './components/on-off';
 
     export default {
         name: 'app',
+        components: {
+            OnOff
+        },
         data() {
             return {
                 name: 'test name',
@@ -76,7 +89,8 @@
                 selectedRadio: 'fb',
                 selectVal: '',
                 selectOpts: ['vk', 'ok', 'fb'],
-                numberVal: 20
+                numberVal: 20,
+                onOff: false
             };
         }
     };
