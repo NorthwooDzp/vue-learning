@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <form class="form-group pt-3">
+        <form class="pt-3">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email"
@@ -8,10 +8,21 @@
                        class="form-control"
                        @change="$v.email.$touch()"
                        v-model="email"
+                       :class="{'is-invalid': $v.email.$error}"
                 >
+                <div class="invalid-feedback"
+                     v-if="$v.email.$error && !$v.email.email"
+                >
+                    Type a correct email
+                </div>
+                <div class="invalid-feedback"
+                     v-if="$v.email.$error && !$v.email.required"
+                >
+                    Required field
+                </div>
             </div>
             <pre>
-                {{ $v.email }}
+                {{$v.email}}
             </pre>
         </form>
     </div>
@@ -39,10 +50,8 @@
 
 <style lang="scss">
     .form-group {
-        div {
             padding: 16px;
             border-radius: 5px;
             border: 1px solid lightblue;
-        }
     }
 </style>
