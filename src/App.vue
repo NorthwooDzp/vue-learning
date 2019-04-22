@@ -84,7 +84,12 @@
         validations: {
             email: {
                 required,
-                email
+                email,
+                uniqEmail: (val) => new Promise((resolve) => {
+                    setTimeout(() => {
+                        val !== 'test@mail.ru' ? resolve(true) : resolve(false);
+                    }, 2000);
+                })
             },
             password: {
                 required,
