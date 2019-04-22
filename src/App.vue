@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <form class="pt-3">
+        <form class="pt-3" @submit.prevent="submitForm">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email"
@@ -40,6 +40,11 @@
                 >
                     Required field
                 </div>
+                <div class="invalid-feedback"
+                     v-if="$v.password.$error && !$v.password.uniqEmail"
+                >
+                    Email already exists
+                </div>
             </div>
             <div class="form-group">
                 <label for="passwordConfirmation">Re-enter Password</label>
@@ -61,6 +66,12 @@
                     Required field
                 </div>
             </div>
+            <div>
+                <button class="btn btn-success"
+                        type="submit"
+                        :disabled="$v.$invalid"
+                >Submit</button>
+            </div>
         </form>
         <pre>
             {{$v}}
@@ -80,6 +91,14 @@
                 password: '',
                 passwordConfirmation: ''
             };
+        },
+        methods: {
+            submitForm() {
+                console.log('email => ', this.email);
+                console.log('password => ', this.password);
+                this.email = '';
+                this.password = '';
+            }
         },
         validations: {
             email: {
