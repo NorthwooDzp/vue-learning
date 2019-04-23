@@ -5,7 +5,8 @@
                 <router-link to="/"
                              tag="a"
                              class="nav-link"
-                             exact active-class="active"
+                             exact
+                             active-class="active"
                 >
                     Home
                 </router-link>
@@ -15,6 +16,7 @@
                              tag="a"
                              class="nav-link"
                              active-class="active"
+                             exact
                 >
                     Cars
                 </router-link>
@@ -27,6 +29,24 @@
                 >
                     About
                 </router-link>
+            </li>
+            <li class="nav-item">
+            <router-link to="/cars/BMW"
+                         tag="a"
+                         class="nav-link"
+                         active-class="active"
+            >
+                Cars -> BMW
+            </router-link>
+            </li>
+            <li class="nav-item">
+            <router-link to="/cars/Audi"
+                         tag="a"
+                         class="nav-link"
+                         active-class="active"
+            >
+                Cars - Audi
+            </router-link>
             </li>
         </ul>
         <div class="content">
