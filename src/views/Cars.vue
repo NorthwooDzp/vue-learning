@@ -4,7 +4,7 @@
         <ul>
             <router-link tag="li"
                          v-for="car of cars"
-                         :to="$router.currentRoute.path + '/' + car"
+                         :to="$route.path + '/' + car"
                          :key="car"
             >
                 {{car}}
